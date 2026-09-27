@@ -659,7 +659,7 @@ def plot_results(cum_strat, drawdown, kosdaq_close, bt_dates, trade_log):
     plt.setp(ax3.xaxis.get_majorticklabels(), rotation=30, ha='right')
 
     plt.tight_layout()
-    save_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "backtest_kosdaq_result.png")
+    save_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "kosdaq150_momentum_result.png")
     plt.savefig(save_path, dpi=150, bbox_inches='tight')
     print(f"\n  [Chart] 차트 저장: {save_path}")
     plt.show()

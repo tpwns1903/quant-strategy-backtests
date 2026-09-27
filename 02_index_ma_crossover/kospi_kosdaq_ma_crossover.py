@@ -1,4 +1,5 @@
 
+import os
 import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -15,6 +16,12 @@ elif platform.system() == "Darwin":
 else:
     rcParams["font.family"] = "NanumGothic"
 rcParams["axes.unicode_minus"] = False
+
+BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR    = os.path.join(BASE_DIR, "data")
+RESULTS_DIR = os.path.join(BASE_DIR, "results")
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(RESULTS_DIR, exist_ok=True)
 
 TICKERS = {"KOSPI": "^KS11", "KOSDAQ": "^KQ11"}
 START_DATE = "2015-03-01"
@@ -63,10 +70,10 @@ for ax, (name, df) in zip(axes, dfs.items()):
 
 axes[-1].set_xlabel("날짜", fontsize=10)
 plt.tight_layout()
-plt.savefig("kospi_kosdaq_close.png", dpi=150, bbox_inches="tight")
+plt.savefig(os.path.join(RESULTS_DIR, "kospi_kosdaq_close.png"), dpi=150, bbox_inches="tight")
 
 for name, df in dfs.items():
-    df.to_csv(f"{name.lower()}_10y.csv")
+    df.to_csv(os.path.join(DATA_DIR, f"{name.lower()}_10y.csv"))
 
 # ══════════════════════════════════════════════════════════════════
 #  이동평균선 교차 전략 백테스트  (MA20 vs MA60)
@@ -186,6 +193,6 @@ for ax, (name, res) in zip(axes2, results.items()):
 
 axes2[-1].set_xlabel("날짜", fontsize=10)
 plt.tight_layout()
-plt.savefig("ma_crossover_backtest.png", dpi=150, bbox_inches="tight")
+plt.savefig(os.path.join(RESULTS_DIR, "ma_crossover_backtest.png"), dpi=150, bbox_inches="tight")
 plt.show()
-print("\n차트 저장 완료 → ma_crossover_backtest.png")
+print("\n차트 저장 완료 → results/ma_crossover_backtest.png")

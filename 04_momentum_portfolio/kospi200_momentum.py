@@ -747,7 +747,7 @@ def plot_results(cum_strat, drawdown, kospi_close, bt_dates, trade_log):
     
     plt.tight_layout()
     
-    save_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "backtest_result.png")
+    save_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "kospi200_momentum_result.png")
     plt.savefig(save_path, dpi=150, bbox_inches='tight')
     print(f"\n  [Chart] 차트 저장: {save_path}")
     plt.show()

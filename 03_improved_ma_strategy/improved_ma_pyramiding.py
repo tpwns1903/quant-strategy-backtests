@@ -37,7 +37,7 @@ else:
 rcParams["axes.unicode_minus"] = False
 
 # ── 경로 설정 ──────────────────────────────────────────────────────
-SAVE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "사진")
+SAVE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 
 import os
 os.makedirs(SAVE_DIR, exist_ok=True)
